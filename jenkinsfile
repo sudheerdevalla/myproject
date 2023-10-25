@@ -36,7 +36,7 @@ stage('Build Docker image') {
         stage('Configure Server with terraform and deploy using Ansible') {
             steps {
                 dir('my-serverfiles') {
-                sh 'sudo chmod 600 myswathi.pem 
+                sh 'sudo chmod 600 mychowdh.pem 
                 sh 'terraform init'
                 sh 'terraform validate'
                 sh 'terraform apply --auto-approve'
