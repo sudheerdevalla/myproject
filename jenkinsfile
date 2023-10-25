@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Swathisrichowdhary123/maybank.git'
+                git branch: 'main', url: 'https://github.com/sudheerdevalla/maybank.git'
             }
         }
         stage('Build Package') {
@@ -22,7 +22,7 @@ pipeline {
         }
 stage('Build Docker image') {
             steps {
-                sh 'docker build -t swathisrichowdhary/maybank:1.0 .'
+                sh 'docker build -t sudheerdevalla/maybank:1.0 .'
             }
         }
         stage('Docker Push Image') {
@@ -30,7 +30,7 @@ stage('Build Docker image') {
                 withCredentials([usernamePassword(credentialsId: 'docker_hub', passwordVariable: 'docker_password', usernameVariable: 'docker_login')]) {
                 sh 'docker login -u ${docker_login} -p ${docker_password}'
                         }
-                sh 'docker push swathisrichowdhary/maybank:1.0 '
+                sh 'docker push sudheerdevalla/maybank:1.0 '
             }
         }
         stage('Configure Server with terraform and deploy using Ansible') {
